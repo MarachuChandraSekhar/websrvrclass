@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 </head>
 <body>
-
+  <div id="app">
     <nav class="navbar is-info" role="navigation" aria-label="main navigation">
 
         <div class="container">
@@ -137,7 +137,7 @@
                     <div class="column is-half content">
                         <h1 class="title">Bulma Examples</h1>
                         <h2 class="subtitle">Some examples of using Bulma</h2> 
-                        <div class="card">
+                        <div class="card" @click="cardClick">
                           <button class="delete"></button>
                           <div class="card-image">
                             <figure class="image is-4by3">
@@ -158,8 +158,7 @@
                             </div>
                         
                             <div class="content">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                              Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                              {{message}} <a>@bulmaio</a>.
                               <a href="#">#css</a> <a href="#">#responsive</a>
                               <br>
                               <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
@@ -167,18 +166,11 @@
                           </div>
                         </div>
 
-                        <div class="notification is-primary">
-                            <button class="delete"></button>
-                            This is a primary alert—check it out!
+                        <div v-for="(x , i) in notifications" :class="`notification is-${x.type}`">
+                            <button class="delete" @click="close(i)"></button>
+                            {{ x.message }}
                         </div>
-                        <div class="notification is-warning">
-                          <button class="delete"></button>
-                          This is a primary alert—check it out!
-                      </div>
-                      <div class="notification is-danger">
-                        <button class="delete"></button>
-                        This is a primary alert—check it out!
-                    </div>
+                        
                     </div>
                        
                     <div class="column is-one-quarter">
@@ -188,15 +180,15 @@
                               Primary
                             </p>
                             <p class="panel-tabs">
-                              <a class="is-active">All</a>
-                              <a>Public</a>
-                              <a>Private</a>
-                              <a>Sources</a>
-                              <a>Forks</a>
+                              <a :class="{ 'is-active': currentTab == 'All' }" @click=" currentTab = 'All'">All</a>
+                              <a :class="{ 'is-active': currentTab == 'Public' }" @click=" currentTab = 'Public'">Public</a>
+                              <a :class="{ 'is-active': currentTab == 'Private' }" @click=" currentTab = 'Private'">Private</a>
+                              <a :class="{ 'is-active': currentTab == 'Sources' }" @click=" currentTab = 'Sources'">Sources</a>
+                              <a :class="{ 'is-active': currentTab == 'Forks' }" @click=" currentTab = 'Forks'">Forks</a>
                             </p>
                             <div class="panel-block">
                               <p class="control has-icons-left">
-                                <input class="input is-primary" type="text" placeholder="Search">
+                                <input class="input is-primary" type="text" :placeholder="prompt">
                                 <span class="icon is-left">
                                   <i class="fas fa-search" aria-hidden="true"></i>
                                 </span>
@@ -231,29 +223,49 @@
                 </div>
             </div>
       </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      </div>
+     
+
+      <!--------VUE--------->
+      <script src="https://unpkg.com/vue@3"></script>
+
       <script>
-        $(".fas,.fab").css({
-             "color": "orange"})
-             .animate({
-             "font-size": "5.5em"
-        });
+        Vue.createApp({
 
-        $(".panel-tabs a").click(function(){
-         $(".panel-tabs a").removeClass("is-active");
-         $(this).addClass("is-active");
-        });
-        $(".delete").click(function(){
-          const shouldWe = confirm("are you sure yu want to close the notification?");
-           alert( shouldWe ? "you deleted it": "you didn't delete it");
-         });
-         $(".delete").click(function(){
-           $(this).closest(" .notification, .card ").slideUp();
-         });
+          data() {
+            return {
+              message: 'Hello Vue!',
+              currentTab: 'All',
+              prompt: 'Waiting for input',
+              notifications: [
+              { type: 'primary' , message: 'this is a primary notification'},
+              { type: 'link' , message: 'link notification'},
+              { type: 'success' , message: 'its done'},
+              { type: 'warning' , message: 'warning'},
+              { type: 'danger' , message: 'you have not done it'},
+            ] 
+            }
+          
+          },
+          methods: {
+             cardClick(){
+               this.message = "you clicked the card";
+             },
+             close(index){
+               this.notifications.splice(index, 1);
+             }
+          },
+          computed: {
 
-        function capitalize(s) {
-          return s && s[0].toUpperCase() + s.slice(1);
-        }
+          },
+          mounted(){
+            setInterval(() =>{
+              this.prompt +='.';
+            }, 500);
+          }
+
+        }).mount('#app')
       </script>
+
 </body>
 </html>
