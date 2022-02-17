@@ -12,8 +12,14 @@ app
    .get('/about', (req, res) => {
   res.send('Hello chandra sekhar');
   })
-  .get('/contact', (req, res) => {
-    res.send('Hello chandra sekhar');
+  
+    .get('/contact', (req, res) => {
+      res.send({
+          email: 'marachuc1@newpaltz.edu',
+          phone: '845-845-1234',
+          twitter: '@MarachuChandraSekhar',
+          instagram: '@MarachuChandraSekhar'
+      });
     })
 
 app.listen(port, () => {
