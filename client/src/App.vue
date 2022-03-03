@@ -7,11 +7,9 @@ import Messagess from './pages/Messagess.vue';
 <template>
      <Nav />
      <div class="container">
-          <section class="section">
-               <h1 class="title">Marachu Chandra Sekhar</h1>
-          </section>
+          <router-view/>
      </div>
-     <Messagess />
+     
      </template>
      <style>
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { RouterLink } from "vue-router";
 const isOpen = ref(false);
 </script>
 
@@ -19,26 +20,26 @@ const isOpen = ref(false);
             </div>
             <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isOpen}">
               <div class="navbar-start">
-                <a class="navbar-item">
+                <router-link class="navbar-item" to="/">
                   Home
-                </a>
-                <a class="navbar-item">
+                </router-link>
+                <router-link class="navbar-item" to="/Messagess">
                   Documentation
-                </a>
+                </router-link>
                 <div class="navbar-item has-dropdown is-hoverable">
                   <a class="navbar-link">
                     More
                   </a>
                   <div class="navbar-dropdown">
-                    <a class="navbar-item">
+                    <router-link class="navbar-item" to="/about">
                       About
-                    </a>
+                    </router-link>
                     <a class="navbar-item">
                       Jobs
                     </a>
-                    <a class="navbar-item">
+                    <router-link class="navbar-item" to="/contact">
                       Contact
-                    </a>
+                    </router-link>
                     <hr class="navbar-divider">
                     <a class="navbar-item">
                       Report an issue
@@ -72,12 +73,12 @@ const isOpen = ref(false);
             
                 <div class="navbar-item">
                   <div class="buttons">
-                    <a class="button is-primary">
+                    <router-link class="button is-primary" to="/signup">
                       <strong>Sign up</strong>
-                    </a>
-                    <a class="button is-light">
+                    </router-link>
+                    <router-link class="button is-light" to="/login">
                       Log in
-                    </a>
+                    </router-link>
                   </div>
                 </div>
               </div>
