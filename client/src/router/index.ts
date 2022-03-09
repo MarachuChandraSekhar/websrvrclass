@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-import Home from '../pages/Home.vue';
+import Home from '../pages/home.vue';
 //import Messages from '../pages/Messages.vue';
 import Generic from '../pages/Generic.vue';
 import Login from '../pages/Login.vue';
@@ -29,7 +29,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-    if (['/messages', '/wall', '/feed'].includes(to.path)) { // list of paths that require login
+    if (['/messages', '/Wall', '/feed'].includes(to.path)) { // list of paths that require login
         if (!session.user) {
             return '/login';
         }
