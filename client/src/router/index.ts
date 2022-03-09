@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-import Home from '../pages/Home.vue';
+import Home from '../pages/home.vue';
 //import Messages from '../pages/Messages.vue';
 import Generic from '../pages/Generic.vue';
 import Login from '../pages/Login.vue';
@@ -13,9 +13,10 @@ const routes: RouteRecordRaw[] = [
   { path: '/', component: Home },
   { path: '/about', component: Generic, props: { title: 'About Page!' } },
   { path: '/contact', component: Generic, props: { title: 'Contact Page!' } },
+  { path: '/hidden', component: Generic, props: { title: 'Reached hidden pages!' } },
   { path: '/login', component: Login },
   { path: '/signup', component: Generic, props: { title: 'Signup Page!' } },
-  { path: '/messages', component: () => import('../pages/Wall.vue') },
+  { path: '/wall', component: () => import('../pages/Wall.vue') },
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -29,7 +30,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-    if (['/messages', '/wall', '/feed'].includes(to.path)) { // list of paths that require login
+  console.log({ to });
+  const protectedUrls = ['/messages','/wall','/feed','/hidden'];
+  console.log({ protectedUrls});
+
+    if (['/messages', '/Wall', '/feed','hidden'].includes(to.path)) { // list of paths that require login
+      console.log('requires login');
         if (!session.user) {
             return '/login';
         }
