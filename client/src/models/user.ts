@@ -1,4 +1,4 @@
-export interface user {
+export interface User {
     firstName: string;
     lastName: string;
     handle: string;
@@ -7,7 +7,7 @@ export interface user {
     pic: string;
     id: number;
 }
-export const list: user[]= [
+export const list: User[]= [
     {
         firstName: 'Chandra Sekhar',
         lastName: 'Marachu',
