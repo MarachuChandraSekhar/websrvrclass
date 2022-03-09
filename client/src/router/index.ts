@@ -15,7 +15,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/contact', component: Generic, props: { title: 'Contact Page!' } },
   { path: '/login', component: Login },
   { path: '/signup', component: Generic, props: { title: 'Signup Page!' } },
-  { path: '/Messagess', component: () => import('../pages/Messagess.vue') },
+  { path: '/messages', component: () => import('../pages/Wall.vue') },
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -29,7 +29,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-    if (['/Messagess'].includes(to.path)) { // list of paths that require login
+    if (['/messages', '/wall', '/feed'].includes(to.path)) { // list of paths that require login
         if (!session.user) {
             return '/login';
         }

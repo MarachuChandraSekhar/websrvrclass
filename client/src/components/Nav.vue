@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from "vue-router";
+import LoginBadge from './LoginBadge.vue';
+import Messages from './Messages.vue';
     
     const isOpen = ref(false);
 </script>
@@ -24,7 +26,7 @@ import { RouterLink } from "vue-router";
                 <router-link class="navbar-item" to="/">
                   Home
                 </router-link>
-                <router-link class="navbar-item" to="/Messagess">
+                <router-link class="navbar-item" to="/messages">
                   Messages
                 </router-link>
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -49,9 +51,15 @@ import { RouterLink } from "vue-router";
                 </div>
               </div>
               <div class="navbar-end">
+
+            
                 <div class="navbar-item">
-                    <div class="field is-grouped">
-                      <p class="control">
+                    <login-badge />
+                </div>
+
+                <messages />
+
+                <div class="navbar-item">
                         <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
                           <span class="icon">
                             <i class="fab fa-twitter"></i>
@@ -60,29 +68,10 @@ import { RouterLink } from "vue-router";
                             Tweet
                           </span>
                         </a>
-                      </p>
-                      <p class="control">
-                        <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.9.3/bulma-0.9.3.zip">
-                          <span class="icon">
-                            <i class="fas fa-download"></i>
-                          </span>
-                          <span>Download</span>
-                        </a>
-                      </p>
-                    </div>
-                </div>
-            
-                <div class="navbar-item">
-                  <div class="buttons">
-                    <router-link class="button is-primary" to="/signup">
-                      <strong>Sign up</strong>
-                    </router-link>
-                    <router-link class="button is-light" to="/login">
-                      Log in
-                    </router-link>
-                  </div>
+
                 </div>
               </div>
+
             </div>
         </div>
       </nav>
