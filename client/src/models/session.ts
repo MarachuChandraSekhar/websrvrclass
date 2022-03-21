@@ -23,7 +23,7 @@ export async function Login(handle: string, password: string) {
         type: "success",
         message: 'welcome back $(user,firstname)!',
       });
-      
+
     session.user = user;
     router.push('/messages');
 } catch (error: any){
