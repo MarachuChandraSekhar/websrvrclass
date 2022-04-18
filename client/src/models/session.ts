@@ -19,7 +19,7 @@ export async function Login(handle: string, password: string) {
         throw { message: "Incorrect password" };
     }
 
-    messages.notifications.push({
+    message.notifications.push({
         type: "success",
         message: 'welcome back $(user,firstname)!',
       });

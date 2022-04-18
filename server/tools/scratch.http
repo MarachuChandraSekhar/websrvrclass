@@ -1,10 +1,22 @@
-http://localhost:3000
+http://localhost:3001
 
 ###
-GET http://localhost:3000/api/users/
+GET http://localhost:3001/api/users/
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJWbGFkaW1pciIsImxhc3ROYW1lIjoiUHV0aW4gSUlJIiwiaGFuZGxlIjoicnVzc2lhbl9kaWN0YXRvciIsImVtYWlsIjoic2F2ZUB1a3JhaW5lLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL21lbi8yLmpwZyIsImlkIjoyLCJpYXQiOjE2NDkwOTg1NDd9.snZEHgy0vMtqifYQyHavTGWLeMpTjoRbfAE1V1Y0ido
 
 ###
-POST http://localhost:3000/api/users
+GET http://localhost:3001/api/users/625359480694a2e572214279
+
+###
+GET http://localhost:3001/api/users/handle/vp
+
+###
+
+DELETE  http://localhost:3001/api/users/625359480694a2e572214278
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJWbGFkaW1pciIsImxhc3ROYW1lIjoiUHV0aW4gSUlJIiwiaGFuZGxlIjoicnVzc2lhbl9kaWN0YXRvciIsImVtYWlsIjoic2F2ZUB1a3JhaW5lLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL21lbi8yLmpwZyIsImlkIjoyLCJpYXQiOjE2NDkwOTg1NDd9.snZEHgy0vMtqifYQyHavTGWLeMpTjoRbfAE1V1Y0ido
+
+###
+POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
@@ -12,6 +24,29 @@ Content-Type: application/json
   "lastName": "Christian",
   "handle": "newpaltz_benevolent",
   "password": "hugo",
-  "email": "jhon@doe.com",
+  "email": "president@newpaltz.edu",
   "pic": "https://randomuser.me/api/portraits/men/2.jpg"
+}
+
+###
+PATCH http://localhost:3001/api/users/2
+Content-Type: application/json
+
+{
+  "lastName": "marachu",
+  "password": "mcs",
+  "email": "sekhar@chandra.com"
+}
+
+###
+POST http://localhost:3001/api/users/login
+Content-Type: application/json
+
+{
+  "email": "sekhar@chandra.com",
+  "password": "mcs"
+}
+
+###
+POST http://localhost:3001/api/users/seed
 }
