@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { usePosts } from "../models/posts";    
-    import PostView from "../components/PosView.vue";
+    import PostView from "../components/PostView.vue";
     const posts = usePosts();
     posts.fetchPosts();
     const currentTab = "All";
